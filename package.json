@@ -1,0 +1,11 @@
+{
+  "name": "rss",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^11.8.1",
+    "luxon": "^1.25.0"
+  }
+}

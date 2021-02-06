@@ -1,0 +1,16 @@
+service: rss
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-west-1
+  deploymentBucket:
+    blockPublicAccess: true
+
+functions:
+  rss:
+    handler: index.handler
+    events:
+      - http:
+          method: get
+          path: /
