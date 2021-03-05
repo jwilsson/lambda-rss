@@ -31,26 +31,24 @@ exports.handler = async () => {
     const url = 'https://developer.spotify.com/community/news/';
     const posts = await fetchPosts(url);
 
-    const body = [
-        '<?xml version="1.0" encoding="UTF-8" ?>',
-        '<rss version="2.0">',
-        '<channel>',
-        '<title>Spotify Developer News</title>',
-        '<description>Spotify Developer News</description>',
-        `<link>${url}</link>`,
-        ...posts.map((post) => {
-            return [
-                '<item>',
-                `<title>${post.title}</title>`,
-                `<description>${post.description}</description>`,
-                `<link>${post.link}</link>`,
-                `<pubDate>${post.date}</pubDate>`,
-                '</item>',
-            ];
-        }),
-        '</channel>',
-        '</rss>'
-    ].join('');
+    const body = `
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <rss version="2.0">
+            <channel>
+                <title>Spotify Developer News</title>
+                <description>Spotify Developer News</description>
+                <link>${url}</link>
+                ${posts.map((post) => `
+                    <item>
+                        <title>${post.title}</title>
+                        <description>${post.description}</description>
+                        <link>${post.link}</link>
+                        <pubDate>${post.date}</pubDate>
+                    </item>
+                `).join('')}
+            </channel>
+        </rss>
+    `;
 
     return {
         body,
