@@ -48,7 +48,7 @@ exports.handler = async () => {
                 `).join('')}
             </channel>
         </rss>
-    `;
+    `.trim();
 
     return {
         body,
