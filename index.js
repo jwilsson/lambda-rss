@@ -42,6 +42,7 @@ exports.handler = async () => {
                 <title>Spotify Developer News</title>
                 <description>Spotify Developer News</description>
                 <link>${BASE_URL}</link>
+                <ttl>60</ttl>
                 ${posts.map((post) => `
                     <item>
                         <title>${post.title}</title>
