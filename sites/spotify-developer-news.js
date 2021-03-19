@@ -24,7 +24,7 @@ const fetch = async () => {
         const date = cleanDate(dateParts.join(' '));
 
         return {
-            date: formatDate(date, 'MMMM dd yyyy'),
+            date: formatDate(date, 'MMMM d yyyy'),
             description: $article.find('.post-excerpt').text().trim(),
             link: new URL(link, BASE_URL),
             title: $article.find('h1').text().trim(),
