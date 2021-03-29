@@ -1,5 +1,5 @@
-import { DateTime } from 'luxon';
+const { DateTime } = require('luxon');
 
-export default (date, format) => {
+module.exports = (date, format) => {
     return DateTime.fromFormat(date, format).toRFC2822();
 };
