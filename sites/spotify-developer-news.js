@@ -1,7 +1,7 @@
-const { URL } = require('url');
+import { URL } from 'url';
 
-const formatDate = require('../utils/format-date');
-const request = require('../utils/request');
+import formatDate from '../utils/format-date.js';
+import request from '../utils/request.js';
 
 const BASE_URL = 'https://developer.spotify.com/community/news/';
 const NAME = 'Spotify Developer News';
@@ -38,6 +38,6 @@ const fetch = async () => {
     };
 };
 
-module.exports = {
+export default {
     fetch,
 };

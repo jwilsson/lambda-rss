@@ -1,7 +1,7 @@
-const cheerio = require('cheerio');
-const got = require('got');
+import cheerio from 'cheerio';
+import got from 'got';
 
-module.exports = async (url) => {
+export default async (url) => {
     const { body } = await got(url);
 
     return cheerio.load(body);

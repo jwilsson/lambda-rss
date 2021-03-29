@@ -1,8 +1,10 @@
+import spotifyDeveloperNews from './sites/spotify-developer-news.js';
+
 const SITES = {
-    'spotify-developer-news': require('./sites/spotify-developer-news'),
+    'spotify-developer-news': spotifyDeveloperNews,
 };
 
-exports.handler = async ({ queryStringParameters }) => {
+export const handler = async ({ queryStringParameters }) => {
     const site = SITES[queryStringParameters?.site];
 
     if (!site) {
