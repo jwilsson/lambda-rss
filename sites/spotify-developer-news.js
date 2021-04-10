@@ -16,7 +16,7 @@ const cleanDate = (date) => {
 const fetch = async () => {
     const $ = await request(BASE_URL);
 
-    const posts = $('.posts-wrapper article').toArray().map((article) => {
+    return $('.posts-wrapper article').toArray().map((article) => {
         const $article = $(article);
 
         const [_, ...dateParts] = $article.find('.post-date').text().split(' ');
@@ -30,14 +30,10 @@ const fetch = async () => {
             title: $article.find('h1').text().trim(),
         };
     });
-
-    return {
-        name: NAME,
-        posts,
-        url: BASE_URL,
-    };
 };
 
 module.exports = {
     fetch,
+    name: NAME,
+    url: BASE_URL,
 };

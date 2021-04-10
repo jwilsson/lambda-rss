@@ -13,7 +13,8 @@ exports.handler = async ({ queryStringParameters }) => {
         };
     }
 
-    const { name, posts, url } = await site.fetch();
+    const { fetch, name, url } = site;
+    const posts = await fetch();
     const body = `
         <?xml version="1.0" encoding="UTF-8" ?>
         <rss version="2.0">
