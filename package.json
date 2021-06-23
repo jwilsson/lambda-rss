@@ -9,7 +9,8 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "got": "^11.8.1",
-    "luxon": "^1.25.0"
+    "luxon": "^1.25.0",
+    "sanitize-filename": "^1.6.3"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.0",

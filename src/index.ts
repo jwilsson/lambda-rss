@@ -1,17 +1,17 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-
-import spotifyDeveloperNews from './sites/spotify-developer-news';
+import sanitizeFilename from 'sanitize-filename';
+import path from 'path';
+import fs from 'fs';
 
 import { Site } from './types';
 
-const SITES: { [key: string]: Site } = {
-    'spotify-developer-news': spotifyDeveloperNews,
-};
-
 exports.handler = async ({ queryStringParameters }: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
-    const site = SITES[queryStringParameters?.site ?? ''];
+    const { site = '' } = queryStringParameters ?? {};
+    const sitePath = path.resolve(__dirname, `./sites/${sanitizeFilename(site)}.js`);
 
-    if (!site) {
+    try {
+        fs.statSync(sitePath);
+    } catch {
         return {
             body: '',
             isBase64Encoded: false,
@@ -19,7 +19,7 @@ exports.handler = async ({ queryStringParameters }: APIGatewayProxyEvent): Promi
         };
     }
 
-    const { fetch, name, url } = site;
+    const { fetch, name, url }: Site = await import(sitePath);
     const posts = await fetch();
     const body = `
         <?xml version="1.0" encoding="UTF-8" ?>
