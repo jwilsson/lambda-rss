@@ -9,6 +9,7 @@ const BASE_URL = 'https://developer.spotify.com/community/news/';
 const NAME = 'Spotify Developer News';
 
 const cleanDate = (date: string): string => {
+    date = date.replace(/(\d+)(st|nd|rd|th)/, '$1');
     date = date.replace(',', '');
 
     return date;
