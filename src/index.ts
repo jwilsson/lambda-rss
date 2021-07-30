@@ -8,7 +8,9 @@ const SITES: { [key: string]: Site } = {
     'spotify-developer-news': spotifyDeveloperNews,
 };
 
-exports.handler = async ({ queryStringParameters }: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
+exports.handler = async ({
+    queryStringParameters,
+}: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const { s = '' } = queryStringParameters ?? {};
     const site = SITES[s];
 
@@ -30,7 +32,9 @@ exports.handler = async ({ queryStringParameters }: APIGatewayProxyEvent): Promi
                 <description>${name}</description>
                 <link>${url}</link>
                 <ttl>720</ttl>
-                ${posts.map((post) => `
+                ${posts
+                    .map(
+                        (post) => `
                     <item>
                         <title>${post.title}</title>
                         <description>${post.description}</description>
@@ -38,7 +42,9 @@ exports.handler = async ({ queryStringParameters }: APIGatewayProxyEvent): Promi
                         <link>${post.link}</link>
                         <pubDate>${post.date}</pubDate>
                     </item>
-                `).join('')}
+                `,
+                    )
+                    .join('')}
             </channel>
         </rss>
     `.trim();

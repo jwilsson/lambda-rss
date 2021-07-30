@@ -9,7 +9,7 @@ const BASE_URL = 'https://developer.spotify.com/community/news/';
 const NAME = 'Spotify Developer News';
 
 const cleanDate = (date: string): string => {
-    date = date.replace(/(\d+)(st|nd|rd|th)/, '$1');
+    date = date.replace(/(\d+)(st|nd|rd|th)/u, '$1');
     date = date.replace(',', '');
 
     return date;
@@ -17,8 +17,9 @@ const cleanDate = (date: string): string => {
 
 const fetch = async (): Promise<Article[]> => {
     const $ = await request(BASE_URL);
+    const articles = $('.posts-wrapper article').toArray();
 
-    return $('.posts-wrapper article').toArray().map((article) => {
+    return articles.map((article) => {
         const $article = $(article);
 
         const [_, ...dateParts] = $article.find('.post-date').text().split(' ');
