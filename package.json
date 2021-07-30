@@ -12,7 +12,7 @@
     "luxon": "^1.25.0"
   },
   "devDependencies": {
-    "@tsconfig/node14": "^1.0.0",
+    "@jwilsson/tsconfig": "^1.0.0",
     "@types/aws-lambda": "^8.10.75",
     "@types/luxon": "^1.26.4",
     "typescript": "^4.2.4"
