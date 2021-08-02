@@ -1,18 +1,12 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
-import { spotifyDeveloperNews } from './sites/spotify-developer-news';
-
-import { Site } from './types';
-
-const SITES: { [key: string]: Site } = {
-    'spotify-developer-news': spotifyDeveloperNews,
-};
+import { sites } from './sites';
 
 exports.handler = async ({
     queryStringParameters,
 }: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const { s = '' } = queryStringParameters ?? {};
-    const site = SITES[s];
+    const site = sites[s];
 
     if (!site) {
         return {
