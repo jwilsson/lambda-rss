@@ -6,7 +6,7 @@ exports.handler = async ({
     queryStringParameters,
 }: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const { s = '' } = queryStringParameters ?? {};
-    const site = sites[s];
+    const site = sites.get(s);
 
     if (!site) {
         return {

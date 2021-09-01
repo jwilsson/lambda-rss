@@ -2,6 +2,6 @@ import { Site } from '../types';
 
 import { spotifyDeveloperNews } from './spotify-developer-news';
 
-export const sites: { [key: string]: Site } = {
-    'spotify-developer-news': spotifyDeveloperNews,
-};
+export const sites = new Map<string, Site>([
+    ['spotify-developer-news', spotifyDeveloperNews],
+]);
