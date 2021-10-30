@@ -14,13 +14,13 @@
     "luxon": "^2.0.1"
   },
   "devDependencies": {
-    "@jwilsson/eslint-config-prettier": "^6.1.0",
-    "@jwilsson/eslint-config-typescript": "^6.0.0",
+    "@jwilsson/eslint-config-prettier": "^7.1.0",
+    "@jwilsson/eslint-config-typescript": "^7.1.0",
     "@jwilsson/prettier-config": "^1.0.0",
     "@jwilsson/tsconfig": "^1.1.0",
     "@types/aws-lambda": "^8.10.75",
     "@types/luxon": "^2.0.1",
-    "eslint": "^7.31.0",
+    "eslint": "^8.1.0",
     "prettier": "^2.3.2",
     "simple-git-hooks": "^2.2.0",
     "typescript": "^4.4.2"
