@@ -1,7 +1,7 @@
 import { Article } from './Article';
 
-export interface Site {
+export type Site = {
     fetch: () => Promise<Article[]>;
     name: string;
     url: string;
-}
+};

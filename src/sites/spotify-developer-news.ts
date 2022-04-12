@@ -1,9 +1,7 @@
 import { URL } from 'url';
-
+import { Article, Site } from '../types';
 import formatDate from '../utils/format-date';
 import request from '../utils/request';
-
-import { Article, Site } from '../types';
 
 const BASE_URL = 'https://developer.spotify.com/community/news/';
 const NAME = 'Spotify Developer News';
@@ -22,7 +20,7 @@ const fetch = async (): Promise<Article[]> => {
     return articles.map((article) => {
         const $article = $(article);
 
-        const [_, ...dateParts] = $article.find('.post-date').text().split(' ');
+        const [, ...dateParts] = $article.find('.post-date').text().split(' ');
         const link = $article.find('.post-title').attr('href') ?? '';
         const date = cleanDate(dateParts.join(' '));
 
