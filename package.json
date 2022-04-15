@@ -29,7 +29,10 @@
         "pre-commit": "npx lint-staged"
     },
     "lint-staged": {
-        "*.js": "prettier --write src"
+        "*.ts": [
+            "eslint --fix",
+            "prettier --write"
+        ]
     },
     "eslintConfig": {
         "extends": [
