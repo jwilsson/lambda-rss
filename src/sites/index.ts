@@ -1,5 +1,4 @@
-import { Site } from '../types';
-
+import type { Site } from '../types';
 import { spotifyDeveloperNews } from './spotify-developer-news';
 
 export const sites = new Map<string, Site>([
