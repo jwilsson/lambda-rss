@@ -1,13 +1,15 @@
 ARG FUNCTION_DIR="/function"
 
-FROM node:16-buster as build-image
+FROM node:16-alpine as build-image
 
-RUN apt-get update && apt-get install -y \
+RUN apk add \
+    autoconf \
+    automake \
+    build-base \
     cmake \
-    g++ \
-    libcurl4-openssl-dev \
-    make \
-    unzip
+    libexecinfo-dev \
+    libtool \
+    python3
 
 ARG FUNCTION_DIR
 
@@ -19,7 +21,7 @@ COPY dist/* .
 
 RUN npm install aws-lambda-ric
 
-FROM node:16-buster-slim
+FROM node:16-alpine
 
 ARG FUNCTION_DIR
 
