@@ -1,8 +1,8 @@
 import { load, type CheerioAPI } from 'cheerio';
-import got from 'got';
 
 export default async (url: string): Promise<CheerioAPI> => {
-    const { body } = await got(url);
+    const response = await fetch(url);
+    const body = await response.text();
 
     return load(body);
 };

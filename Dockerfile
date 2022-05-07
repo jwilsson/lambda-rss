@@ -27,6 +27,6 @@ WORKDIR ${FUNCTION_DIR}
 
 COPY --from=build-image ${FUNCTION_DIR} ${FUNCTION_DIR}
 
-ENTRYPOINT ["/usr/local/bin/npx", "aws-lambda-ric"]
+ENTRYPOINT ["/usr/local/bin/npx", "--node-options=--experimental-fetch", "aws-lambda-ric"]
 
 CMD ["app.handler"]
