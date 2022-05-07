@@ -1,4 +1,4 @@
-import { URL } from 'url';
+import { URL } from 'node:url';
 import type { Article, Site } from '../types';
 import formatDate from '../utils/format-date';
 import request from '../utils/request';
