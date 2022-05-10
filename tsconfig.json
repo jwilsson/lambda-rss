@@ -1,8 +1,4 @@
 {
     "extends": "@jwilsson/tsconfig/tsconfig.json",
-    "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2020",
-    },
     "include": ["src/**/*.ts"],
 }
