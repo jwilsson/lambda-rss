@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "cheerio": "^1.0.0-rc.10",
-        "luxon": "^2.0.1"
+        "luxon": "^3.0.1"
     },
     "devDependencies": {
         "@jwilsson/eslint-config-prettier": "^7.6.0",
@@ -19,8 +19,8 @@
         "@jwilsson/prettier-config": "^7.2.0",
         "@jwilsson/tsconfig": "^1.1.0",
         "@types/aws-lambda": "^8.10.75",
-        "@types/luxon": "^2.0.1",
-        "@types/node": "^17.0.31",
+        "@types/luxon": "^3.0.1",
+        "@types/node": "^18.0.5",
         "esbuild": "^0.14.38",
         "eslint": "^8.1.0",
         "prettier": "^2.3.2",
