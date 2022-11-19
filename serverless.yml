@@ -2,16 +2,14 @@ service: rss
 
 provider:
   name: aws
+  runtime: nodejs18.x
   region: eu-west-1
-  ecr:
-    images:
-      rssimage:
-        path: ./
+  deploymentBucket:
+    blockPublicAccess: true
 
 functions:
   rss:
-    image:
-      name: rssimage
+    handler: dist/index.handler
     events:
       - http:
           method: get
