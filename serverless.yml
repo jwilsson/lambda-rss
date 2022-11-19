@@ -9,7 +9,7 @@ provider:
 
 functions:
   rss:
-    handler: dist/index.handler
+    handler: dist/app.handler
     events:
       - http:
           method: get
