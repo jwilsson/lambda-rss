@@ -1,4 +1,4 @@
-import type { Article } from './Article';
+import { Article } from './Article';
 
 export type Site = {
     fetch: () => Promise<Article[]>;

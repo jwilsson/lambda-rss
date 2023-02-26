@@ -1,4 +1,4 @@
-import { load, type CheerioAPI } from 'cheerio';
+import { CheerioAPI, load } from 'cheerio';
 
 export default async (url: string): Promise<CheerioAPI> => {
     const response = await fetch(url);
