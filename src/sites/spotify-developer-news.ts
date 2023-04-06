@@ -3,32 +3,29 @@ import { Article, Site } from '../types';
 import formatDate from '../utils/format-date';
 import request from '../utils/request';
 
-const BASE_URL = 'https://developer.spotify.com/community/news/';
+const BASE_URL = 'https://developer.spotify.com/community';
 const NAME = 'Spotify Developer News';
 
-const cleanDate = (date: string): string => {
-    date = date.replace(/(\d+)(st|nd|rd|th)/u, '$1');
-    date = date.replace(',', '');
-
-    return date;
-};
+const cleanDate = (date: string): string => date.replace(',', '');
 
 const fetch = async (): Promise<Article[]> => {
     const $ = await request(BASE_URL);
-    const articles = $('.posts-wrapper article').toArray();
+    const articles = $('main [role="listitem"]').toArray();
 
     return articles.map((article) => {
         const $article = $(article);
+        const $link = $article.find('a');
+        const $date = $article.find('b');
 
-        const [, ...dateParts] = $article.find('.post-date').text().split(' ');
-        const link = $article.find('.post-title').attr('href') ?? '';
-        const date = cleanDate(dateParts.join(' '));
+        const date = cleanDate($date.text());
+        const url = $link.attr('href') ?? '';
+        const title = $link.text().trim();
 
         return {
             date: formatDate(date, 'MMMM d yyyy'),
-            description: $article.find('.post-excerpt').text().trim(),
-            link: new URL(link, BASE_URL).toString(),
-            title: $article.find('h1').text().trim(),
+            description: title,
+            link: new URL(url, BASE_URL).toString(),
+            title,
         };
     });
 };
