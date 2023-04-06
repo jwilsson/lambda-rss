@@ -15,15 +15,15 @@ const fetch = async (): Promise<Article[]> => {
     return articles.map((article) => {
         const $article = $(article);
         const $link = $article.find('a');
-        const $date = $article.find('b');
 
-        const date = cleanDate($date.text());
+        const date = cleanDate($article.find('b').text());
+        const type = $article.find('[type]').text();
         const url = $link.attr('href') ?? '';
         const title = $link.text().trim();
 
         return {
             date: formatDate(date, 'MMMM d yyyy'),
-            description: title,
+            description: `${type} - ${title}`,
             link: new URL(url, BASE_URL).toString(),
             title,
         };
