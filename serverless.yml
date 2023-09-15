@@ -10,7 +10,4 @@ provider:
 functions:
   rss:
     handler: dist/app.handler
-    events:
-      - http:
-          method: get
-          path: /
+    url: true
