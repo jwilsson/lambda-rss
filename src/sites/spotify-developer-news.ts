@@ -12,15 +12,17 @@ const fetch = async (): Promise<Article[]> => {
 
     return articles.map((article) => {
         const $article = $(article);
+        const $date = $article.find('b');
         const $link = $article.find('a');
+        const $type = $article.find('[type]');
 
-        const date = formatDate($article.find('b').text(), 'MMMM d, yyyy');
-        const type = $article.find('[type]').text().trim();
-        const url = $link.attr('href') ?? '';
+        const date = $date.text().trim();
         const title = $link.text().trim();
+        const type = $type.text().trim();
+        const url = $link.attr('href') ?? '';
 
         return {
-            date,
+            date: formatDate(date, 'MMMM d, yyyy'),
             description: `${type} - ${title}`,
             link: new URL(url, BASE_URL).toString(),
             title,
