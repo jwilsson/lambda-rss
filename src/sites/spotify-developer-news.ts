@@ -6,8 +6,6 @@ import { request } from '../utils/request';
 const BASE_URL = 'https://developer.spotify.com/community';
 const NAME = 'Spotify Developer News';
 
-const cleanDate = (date: string): string => date.replace(',', '');
-
 const fetch = async (): Promise<Article[]> => {
     const $ = await request(BASE_URL);
     const articles = $('main [role="listitem"]').toArray();
@@ -16,13 +14,13 @@ const fetch = async (): Promise<Article[]> => {
         const $article = $(article);
         const $link = $article.find('a');
 
-        const date = cleanDate($article.find('b').text());
-        const type = $article.find('[type]').text();
+        const date = formatDate($article.find('b').text(), 'MMMM d, yyyy');
+        const type = $article.find('[type]').text().trim();
         const url = $link.attr('href') ?? '';
         const title = $link.text().trim();
 
         return {
-            date: formatDate(date, 'MMMM d yyyy'),
+            date,
             description: `${type} - ${title}`,
             link: new URL(url, BASE_URL).toString(),
             title,
