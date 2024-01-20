@@ -1,6 +1,6 @@
 import { sites } from './sites';
 
-export default async (siteName: string): Promise<string> => {
+export const rss = async (siteName: string): Promise<string> => {
     const site = sites.get(siteName);
 
     if (!site) {

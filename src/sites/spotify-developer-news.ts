@@ -1,7 +1,7 @@
 import { URL } from 'node:url';
 import { Article, Site } from '../types';
-import formatDate from '../utils/format-date';
-import request from '../utils/request';
+import { formatDate } from '../utils/format-date';
+import { request } from '../utils/request';
 
 const BASE_URL = 'https://developer.spotify.com/community';
 const NAME = 'Spotify Developer News';

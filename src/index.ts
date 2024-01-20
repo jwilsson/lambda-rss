@@ -1,5 +1,5 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
-import rss from './rss';
+import { rss } from './rss';
 
 export const handler = async ({ queryStringParameters }: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     const { s = '' } = queryStringParameters ?? {};
