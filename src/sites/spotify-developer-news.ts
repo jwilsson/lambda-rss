@@ -1,13 +1,13 @@
 import { URL } from 'node:url';
 import { Article, Site } from '../types';
+import { fetchSite } from '../utils/fetch-site';
 import { formatDate } from '../utils/format-date';
-import { request } from '../utils/request';
 
 const BASE_URL = 'https://developer.spotify.com/community';
 const NAME = 'Spotify Developer News';
 
 const fetch = async (): Promise<Article[]> => {
-    const $ = await request(BASE_URL);
+    const $ = await fetchSite(BASE_URL);
     const articles = $('main [role="listitem"]').toArray();
 
     return articles.map((article) => {
